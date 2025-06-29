@@ -1,5 +1,7 @@
 package ar.edu.unlam.pb2.cazadoresRecompensas;
 
+import java.util.Objects;
+
 public class Profugo {
 
 	private Integer inocencia;
@@ -22,6 +24,23 @@ public class Profugo {
 		return this.habilidad;
 	}
 	
+	@Override
+	public int hashCode() {
+		return Objects.hash(nombre);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Profugo other = (Profugo) obj;
+		return Objects.equals(nombre, other.nombre);
+	}
+
 	public Integer getInocencia() {
 		return this.inocencia;
 	}
