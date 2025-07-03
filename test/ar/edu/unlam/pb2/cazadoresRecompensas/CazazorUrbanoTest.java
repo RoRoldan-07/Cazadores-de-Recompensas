@@ -76,27 +76,15 @@ public class CazazorUrbanoTest {
 		assertNotNull(cazadorUrbano.buscarIntimidados(profugo1));
 	}
 	
-	@Test
-	public void queCazarUnProfujoSumeExperiencia() {
-		CazadorUrbano cazadorUrbano = new CazadorUrbano("Martin", 50);
-		Profugo profugo1 = new Profugo("Jorge", 40, 2, false);
-		cazadorUrbano.cazar(profugo1);
-		
-		//El cazador tiene 50 de experiencia, el profugo 2 de habilidad
-		//Como no lo intimido antes, la suma de experienca va a dar 2.
-		assertEquals( Integer.valueOf(52), cazadorUrbano.getExperiencia());
-	}
 	
 	@Test
-	public void queLuegoDeIntimidarCazeUnProfujoYSumeExperiencia() {
+	public void queAlIntimidarNoSumeExperiencia() {
 		CazadorUrbano cazadorUrbano = new CazadorUrbano("Martin", 50);
-		Profugo profugo1 = new Profugo("Jorge", 40, 2, true);
-		cazadorUrbano.cazar(profugo1);
-		cazadorUrbano.cazar(profugo1);
-		
-		//El cazador tiene 50 de experiencia, el profugo 2 de habilidad
-		//Como ya lo intimido antes la suma de experienca va a dar 4.
-		assertEquals( Integer.valueOf(54), cazadorUrbano.getExperiencia());
+		Profugo profugo = new Profugo("Jorge", 100, 30, false); 
+
+		cazadorUrbano.cazar(profugo);
+
+		assertEquals(Integer.valueOf(50), cazadorUrbano.getExperiencia());
 	}
 	
 	@Test

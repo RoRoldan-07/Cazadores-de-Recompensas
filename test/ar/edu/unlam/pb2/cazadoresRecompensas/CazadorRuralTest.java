@@ -1,0 +1,134 @@
+package ar.edu.unlam.pb2.cazadoresRecompensas;
+
+import static org.junit.Assert.*;
+
+import java.util.ArrayList;
+
+import org.junit.Test;
+
+public class CazadorRuralTest {
+
+	@Test
+	public void queSePuedaConocerLaExperienciaDelCazador() {
+		CazadorRural cazadorRural = new CazadorRural("Juan", 40);
+		
+		assertEquals(Integer.valueOf(40), cazadorRural.getExperiencia());
+	}
+	@Test
+	public void quePuedaCazarUnProfujoDeBajaInocenciaYQueSeaNervioso() {
+		CazadorRural cazadorRural = new CazadorRural("Juan", 40);
+		Profugo profugo1 = new Profugo("Jorge", 30, 80, true);
+		
+		assertTrue(cazadorRural.cazar(profugo1));;
+	}
+	
+	@Test
+	public void queNoPuedaCazarUnProfujoDeMayorInocenciaQueExperiencia() {
+		CazadorRural cazadorRural = new CazadorRural("Juan", 40);
+		Profugo profugo1 = new Profugo("Jorge", 41, 80, true);
+		
+		assertFalse(cazadorRural.cazar(profugo1));;
+	}
+	@Test
+	public void queNoPuedaCazarUnProfujoQueNoSeaNervioso() {
+		CazadorRural cazadorRural = new CazadorRural("Juan", 50);
+		Profugo profugo1 = new Profugo("Jorge", 1, 80, false);
+		
+		assertFalse(cazadorRural.cazar(profugo1));
+
+	}
+	
+	@Test
+	public void queNoPuedaCazarUnProfujoYLoPuedaIntimidar() {
+		CazadorRural cazadorRural = new CazadorRural("Juan", 50);
+		Profugo profugo1 = new Profugo("Jorge", 40, 80, false);
+		cazadorRural.cazar(profugo1);
+
+		assertTrue(profugo1.esNervioso());
+
+	}
+	
+	@Test
+	public void queAlCazarUnProfugoSeAgregeAUnaLaListaDeCapturados() {
+		CazadorRural cazadorRural = new CazadorRural("Juan", 40);
+		Profugo profugo1 = new Profugo("Jorge", 30, 80, true);
+		cazadorRural.cazar(profugo1);
+		
+		assertNotNull(cazadorRural.buscarCapturado(profugo1));
+	}
+	
+	@Test
+	public void queAlIntimidarUnProfugoSeAgregeAUnaLaListaDeIntimidados() {
+		CazadorRural cazadorRural = new CazadorRural("Juan", 40);
+		Profugo profugo1 = new Profugo("Jorge", 30, 80, false);
+		cazadorRural.cazar(profugo1);
+		
+		assertNotNull(cazadorRural.buscarIntimidados(profugo1));
+	}
+	
+	@Test
+	public void quePuedaCazarEnUnaZonaEspecificaUnConjuntoDeProfugos() {
+		CazadorRural cazadorRural = new CazadorRural("Juan", 50);
+		Profugo profugo1 = new Profugo("Jorge", 40, 80, true);
+		Profugo profugo2 = new Profugo("Martin", 40, 80, true);
+		Profugo profugo3 = new Profugo("Lucas", 40, 80, false);
+		ArrayList<Profugo> listaDeProfugos = new ArrayList<Profugo>();
+		listaDeProfugos.add(profugo1);
+		listaDeProfugos.add(profugo2);
+		listaDeProfugos.add(profugo3);
+		Zona zona1 = new Zona("Moron", listaDeProfugos);
+		
+		cazadorRural.cazarEnZona(zona1);
+		
+		//El unico que no puede ser capturado es "Lucas" ya que nervioso = true;
+		assertNotNull(cazadorRural.buscarCapturado(profugo1));
+		assertNotNull(cazadorRural.buscarCapturado(profugo2));
+		assertNull(cazadorRural.buscarCapturado(profugo3));
+	}
+	
+	@Test
+	public void quePuedaCazarEnUnaZonaEspecificaUnConjuntoDeProfugosYSumeExperiencia() {
+		CazadorRural cazadorRural = new CazadorRural("Juan", 50);
+		Profugo profugo1 = new Profugo("Jorge", 40, 80, true);
+		Profugo profugo2 = new Profugo("Martin", 40, 80, true);
+		ArrayList<Profugo> listaDeProfugos = new ArrayList<Profugo>();
+		listaDeProfugos.add(profugo1);
+		listaDeProfugos.add(profugo2);
+		Zona zona1 = new Zona("Moron", listaDeProfugos);
+		
+		cazadorRural.cazarEnZona(zona1);
+		
+		
+		assertEquals(Integer.valueOf(54), cazadorRural.getExperiencia());
+	}
+	
+	@Test
+	public void queAlIntimidarNoSumeExperiencia() {
+		CazadorRural cazadorRural = new CazadorRural("Martin", 50);
+		Profugo profugo = new Profugo("Jorge", 100, 30, true); 
+
+		cazadorRural.cazar(profugo);
+
+		assertEquals(Integer.valueOf(50), cazadorRural.getExperiencia());
+	}
+	
+	@Test
+	public void quePuedaCazarEnUnaZonaEspecificaUnConjuntoDeProfugosYQueLaZonaQuedeLimpia() {
+		CazadorRural cazadorRural = new CazadorRural("Juan", 50);
+		Profugo profugo1 = new Profugo("Jorge", 40, 80, true);
+		Profugo profugo2 = new Profugo("Martin", 40, 80, true);
+		Profugo profugo3 = new Profugo("Lucas", 40, 80, true);
+		ArrayList<Profugo> listaDeProfugos = new ArrayList<Profugo>();
+		listaDeProfugos.add(profugo1);
+		listaDeProfugos.add(profugo2);
+		listaDeProfugos.add(profugo3);
+		Zona zona1 = new Zona("Moron", listaDeProfugos);
+		
+		cazadorRural.cazarEnZona(zona1);
+		
+		assertFalse(zona1.getProfugos().contains(profugo1));
+		assertFalse(zona1.getProfugos().contains(profugo2));
+		assertFalse(zona1.getProfugos().contains(profugo3));
+	}
+	
+}
