@@ -1,17 +1,16 @@
 package ar.edu.unlam.pb2.cazadoresRecompensas;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
-public class CazadorUrbano {
+public class CazadorRural {
 
 	private String nombre;
 	private Integer experiencia;
 	private Set<Profugo> profugosCapturados = new HashSet<Profugo>();
 	private Set<Profugo> profugosIntimidados = new HashSet<Profugo>();
 
-	public CazadorUrbano(String nombre, Integer experiencia) {
+	public CazadorRural(String nombre, Integer experiencia) {
 		this.nombre = nombre;
 		this.experiencia = experiencia;
 	}
@@ -21,19 +20,17 @@ public class CazadorUrbano {
 	}
 
 	public boolean cazar(Profugo profugo1) {
-		if(this.experiencia > profugo1.getInocencia() && profugo1.esNervioso() == false) {
+		if(this.experiencia > profugo1.getInocencia() && profugo1.esNervioso() == true) {
 			profugosCapturados.add(profugo1);
 			return true;
 		}
 		else {
-			profugo1.reducirInocencia();
-			profugo1.setNervioso(false);
+			profugo1.setNervioso(true);
 			profugosIntimidados.add(profugo1);
-	
 			return false;
 		}
 	}
-
+	
 	private void sumarExperiencia() {
 		Integer habilidadMinima = null;
 		Integer totalProfugosCapturados = 0;
@@ -50,8 +47,9 @@ public class CazadorUrbano {
 		}
 		this.experiencia += (habilidadMinima) + (2 * totalProfugosCapturados);
 	}
-	
 
+	
+	
 	public Object buscarCapturado(Profugo profugo1) {
 		if(profugosCapturados.contains(profugo1)) {
 			return profugo1;
@@ -66,12 +64,13 @@ public class CazadorUrbano {
 		return null;
 	}
 
-	public void cazarEnZona(Zona zona) {
-		for (Profugo profugo : zona.getProfugos()) {
+	public void cazarEnZona(Zona zona1) {
+		for (Profugo profugo : zona1.getProfugos()) {
 			cazar(profugo);
 		}
-		zona.eliminarCapturados(profugosCapturados);
 		sumarExperiencia();
+		zona1.eliminarCapturados(profugosCapturados);
+		
 	}
 
 }
