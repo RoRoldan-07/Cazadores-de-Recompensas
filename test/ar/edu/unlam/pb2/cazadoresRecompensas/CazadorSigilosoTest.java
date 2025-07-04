@@ -87,7 +87,7 @@ public class CazadorSigilosoTest {
 	}
 	
 	@Test
-	public void quePuedaCazarEnUnaZonaEspecificaUnConjuntoDeProfugos() {
+	public void quePuedaCazarEnUnaZonaEspecificaUnConjuntoDeProfugos() throws ZonaVaciaException {
 		CazadorSigiloso cazadorSigiloso = new CazadorSigiloso("Martin", 50);
 		ProfugoBase profugo1 = new ProfugoBase("Jorge", 40, 40, false);
 		ProfugoBase profugo2 = new ProfugoBase("Martin", 40, 40, false);
@@ -108,7 +108,7 @@ public class CazadorSigilosoTest {
 	}
 	
 	@Test
-	public void quePuedaCazarEnUnaZonaEspecificaUnConjuntoDeProfugosYQueLaZonaQuedeLimpia() {
+	public void quePuedaCazarEnUnaZonaEspecificaUnConjuntoDeProfugosYQueLaZonaQuedeLimpia() throws ZonaVaciaException {
 		CazadorSigiloso cazadorSigiloso = new CazadorSigiloso("Martin", 50);
 		ProfugoBase profugo1 = new ProfugoBase("Jorge", 40, 40, true);
 		ProfugoBase profugo2 = new ProfugoBase("Martin", 40, 40, false);

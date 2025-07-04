@@ -67,7 +67,7 @@ public class CazadorRuralTest {
 	}
 	
 	@Test
-	public void quePuedaCazarEnUnaZonaEspecificaUnConjuntoDeProfugos() {
+	public void quePuedaCazarEnUnaZonaEspecificaUnConjuntoDeProfugos() throws ZonaVaciaException {
 		CazadorRural cazadorRural = new CazadorRural("Juan", 50);
 		ProfugoBase profugo1 = new ProfugoBase("Jorge", 40, 80, true);
 		ProfugoBase profugo2 = new ProfugoBase("Martin", 40, 80, true);
@@ -87,7 +87,7 @@ public class CazadorRuralTest {
 	}
 	
 	@Test
-	public void quePuedaCazarEnUnaZonaEspecificaUnConjuntoDeProfugosYSumeExperiencia() {
+	public void quePuedaCazarEnUnaZonaEspecificaUnConjuntoDeProfugosYSumeExperiencia() throws ZonaVaciaException {
 		CazadorRural cazadorRural = new CazadorRural("Juan", 50);
 		ProfugoBase profugo1 = new ProfugoBase("Jorge", 40, 80, true);
 		ProfugoBase profugo2 = new ProfugoBase("Martin", 40, 80, true);
@@ -113,7 +113,7 @@ public class CazadorRuralTest {
 	}
 	
 	@Test
-	public void quePuedaCazarEnUnaZonaEspecificaUnConjuntoDeProfugosYQueLaZonaQuedeLimpia() {
+	public void quePuedaCazarEnUnaZonaEspecificaUnConjuntoDeProfugosYQueLaZonaQuedeLimpia() throws ZonaVaciaException {
 		CazadorRural cazadorRural = new CazadorRural("Juan", 50);
 		ProfugoBase profugo1 = new ProfugoBase("Jorge", 40, 80, true);
 		ProfugoBase profugo2 = new ProfugoBase("Martin", 40, 80, true);

@@ -9,6 +9,7 @@ public class Zona {
 	private ArrayList<Profugo> listaDeProfugos;
 
 	public Zona(String nombre, ArrayList<Profugo> listaDeProfugos) {
+		
 		this.nombre = nombre;
 		this.listaDeProfugos = listaDeProfugos;
 	}
