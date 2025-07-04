@@ -15,33 +15,33 @@ public class CazadorRuralTest {
 		assertEquals(Integer.valueOf(40), cazadorRural.getExperiencia());
 	}
 	@Test
-	public void quePuedaCazarUnProfujoDeBajaInocenciaYQueSeaNervioso() {
+	public void quePuedaCazarUnProfugoDeBajaInocenciaYQueSeaNervioso() {
 		CazadorRural cazadorRural = new CazadorRural("Juan", 40);
-		Profugo profugo1 = new Profugo("Jorge", 30, 80, true);
+		ProfugoBase profugo1 = new ProfugoBase("Jorge", 30, 80, true);
 		
 		assertTrue(cazadorRural.cazar(profugo1));;
 	}
 	
 	@Test
-	public void queNoPuedaCazarUnProfujoDeMayorInocenciaQueExperiencia() {
+	public void queNoPuedaCazarUnProfugoDeMayorInocenciaQueExperiencia() {
 		CazadorRural cazadorRural = new CazadorRural("Juan", 40);
-		Profugo profugo1 = new Profugo("Jorge", 41, 80, true);
+		ProfugoBase profugo1 = new ProfugoBase("Jorge", 41, 80, true);
 		
 		assertFalse(cazadorRural.cazar(profugo1));;
 	}
 	@Test
-	public void queNoPuedaCazarUnProfujoQueNoSeaNervioso() {
+	public void queNoPuedaCazarUnProfugoQueNoSeaNervioso() {
 		CazadorRural cazadorRural = new CazadorRural("Juan", 50);
-		Profugo profugo1 = new Profugo("Jorge", 1, 80, false);
+		ProfugoBase profugo1 = new ProfugoBase("Jorge", 1, 80, false);
 		
 		assertFalse(cazadorRural.cazar(profugo1));
 
 	}
 	
 	@Test
-	public void queNoPuedaCazarUnProfujoYLoPuedaIntimidar() {
+	public void queNoPuedaCazarUnProfugoYLoPuedaIntimidar() {
 		CazadorRural cazadorRural = new CazadorRural("Juan", 50);
-		Profugo profugo1 = new Profugo("Jorge", 40, 80, false);
+		ProfugoBase profugo1 = new ProfugoBase("Jorge", 40, 80, false);
 		cazadorRural.cazar(profugo1);
 
 		assertTrue(profugo1.esNervioso());
@@ -51,7 +51,7 @@ public class CazadorRuralTest {
 	@Test
 	public void queAlCazarUnProfugoSeAgregeAUnaLaListaDeCapturados() {
 		CazadorRural cazadorRural = new CazadorRural("Juan", 40);
-		Profugo profugo1 = new Profugo("Jorge", 30, 80, true);
+		ProfugoBase profugo1 = new ProfugoBase("Jorge", 30, 80, true);
 		cazadorRural.cazar(profugo1);
 		
 		assertNotNull(cazadorRural.buscarCapturado(profugo1));
@@ -60,7 +60,7 @@ public class CazadorRuralTest {
 	@Test
 	public void queAlIntimidarUnProfugoSeAgregeAUnaLaListaDeIntimidados() {
 		CazadorRural cazadorRural = new CazadorRural("Juan", 40);
-		Profugo profugo1 = new Profugo("Jorge", 30, 80, false);
+		ProfugoBase profugo1 = new ProfugoBase("Jorge", 30, 80, false);
 		cazadorRural.cazar(profugo1);
 		
 		assertNotNull(cazadorRural.buscarIntimidados(profugo1));
@@ -69,9 +69,9 @@ public class CazadorRuralTest {
 	@Test
 	public void quePuedaCazarEnUnaZonaEspecificaUnConjuntoDeProfugos() {
 		CazadorRural cazadorRural = new CazadorRural("Juan", 50);
-		Profugo profugo1 = new Profugo("Jorge", 40, 80, true);
-		Profugo profugo2 = new Profugo("Martin", 40, 80, true);
-		Profugo profugo3 = new Profugo("Lucas", 40, 80, false);
+		ProfugoBase profugo1 = new ProfugoBase("Jorge", 40, 80, true);
+		ProfugoBase profugo2 = new ProfugoBase("Martin", 40, 80, true);
+		ProfugoBase profugo3 = new ProfugoBase("Lucas", 40, 80, false);
 		ArrayList<Profugo> listaDeProfugos = new ArrayList<Profugo>();
 		listaDeProfugos.add(profugo1);
 		listaDeProfugos.add(profugo2);
@@ -89,8 +89,8 @@ public class CazadorRuralTest {
 	@Test
 	public void quePuedaCazarEnUnaZonaEspecificaUnConjuntoDeProfugosYSumeExperiencia() {
 		CazadorRural cazadorRural = new CazadorRural("Juan", 50);
-		Profugo profugo1 = new Profugo("Jorge", 40, 80, true);
-		Profugo profugo2 = new Profugo("Martin", 40, 80, true);
+		ProfugoBase profugo1 = new ProfugoBase("Jorge", 40, 80, true);
+		ProfugoBase profugo2 = new ProfugoBase("Martin", 40, 80, true);
 		ArrayList<Profugo> listaDeProfugos = new ArrayList<Profugo>();
 		listaDeProfugos.add(profugo1);
 		listaDeProfugos.add(profugo2);
@@ -105,7 +105,7 @@ public class CazadorRuralTest {
 	@Test
 	public void queAlIntimidarNoSumeExperiencia() {
 		CazadorRural cazadorRural = new CazadorRural("Martin", 50);
-		Profugo profugo = new Profugo("Jorge", 100, 30, true); 
+		ProfugoBase profugo = new ProfugoBase("Jorge", 100, 30, true); 
 
 		cazadorRural.cazar(profugo);
 
@@ -115,9 +115,9 @@ public class CazadorRuralTest {
 	@Test
 	public void quePuedaCazarEnUnaZonaEspecificaUnConjuntoDeProfugosYQueLaZonaQuedeLimpia() {
 		CazadorRural cazadorRural = new CazadorRural("Juan", 50);
-		Profugo profugo1 = new Profugo("Jorge", 40, 80, true);
-		Profugo profugo2 = new Profugo("Martin", 40, 80, true);
-		Profugo profugo3 = new Profugo("Lucas", 40, 80, true);
+		ProfugoBase profugo1 = new ProfugoBase("Jorge", 40, 80, true);
+		ProfugoBase profugo2 = new ProfugoBase("Martin", 40, 80, true);
+		ProfugoBase profugo3 = new ProfugoBase("Lucas", 40, 80, true);
 		ArrayList<Profugo> listaDeProfugos = new ArrayList<Profugo>();
 		listaDeProfugos.add(profugo1);
 		listaDeProfugos.add(profugo2);
