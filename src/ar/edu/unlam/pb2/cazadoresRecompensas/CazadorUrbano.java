@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
+
 public class CazadorUrbano extends Cazador {
+
 
 	public CazadorUrbano(String nombre, Integer experiencia) {
 		super(nombre, experiencia);
@@ -12,6 +14,7 @@ public class CazadorUrbano extends Cazador {
 
 	@Override
 	public boolean cazar(Profugo profugo1) {
+
 		if(this.experiencia > profugo1.getInocencia() && profugo1.esNervioso() == false) {
 			profugosCapturados.add(profugo1);
 			return true;
@@ -24,5 +27,4 @@ public class CazadorUrbano extends Cazador {
 			return false;
 		}
 	}
-
 }
