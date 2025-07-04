@@ -45,4 +45,8 @@ public class conProteccionLegal implements Profugo {
 
 	}
 
+	@Override
+	public void setNervioso(boolean valor) {
+		this.profugoComun.setNervioso(valor);
+	}
 }
