@@ -16,14 +16,14 @@ public class CazazorUrbanoTest {
 	}
 	
 	@Test
-	public void quePuedaCazarUnProfujoDeBajaInocenciaYNoNervioso() {
+	public void quePuedaCazarUnProfugoDeBajaInocenciaYNoNervioso() {
 		CazadorUrbano cazadorUrbano = new CazadorUrbano("Martin", 50);
 		Profugo profugo1 = new Profugo("Jorge", 40, 80, false);
 		
 		assertTrue(cazadorUrbano.cazar(profugo1));
 	}
 	@Test
-	public void queNoPuedaCazarUnProfujoDeMayorInocenciaQueExperiencia() {
+	public void queNoPuedaCazarUnProfugoDeMayorInocenciaQueExperiencia() {
 		CazadorUrbano cazadorUrbano = new CazadorUrbano("Martin", 50);
 		Profugo profugo1 = new Profugo("Jorge", 51, 80, false);
 		
@@ -32,7 +32,7 @@ public class CazazorUrbanoTest {
 	}
 	
 	@Test
-	public void queNoPuedaCazarUnProfujoQueSeaNervioso() {
+	public void queNoPuedaCazarUnProfugoQueSeaNervioso() {
 		CazadorUrbano cazadorUrbano = new CazadorUrbano("Martin", 50);
 		Profugo profugo1 = new Profugo("Jorge", 1, 80, true);
 		
@@ -41,7 +41,7 @@ public class CazazorUrbanoTest {
 	}
 	
 	@Test
-	public void queNoPuedaCazarUnProfujoYLoPuedaIntimidar() {
+	public void queNoPuedaCazarUnProfugoYLoPuedaIntimidar() {
 		CazadorUrbano cazadorUrbano = new CazadorUrbano("Martin", 50);
 		Profugo profugo1 = new Profugo("Jorge", 54, 80, true);
 		cazadorUrbano.cazar(profugo1);

@@ -15,7 +15,7 @@ public class CazadorRuralTest {
 		assertEquals(Integer.valueOf(40), cazadorRural.getExperiencia());
 	}
 	@Test
-	public void quePuedaCazarUnProfujoDeBajaInocenciaYQueSeaNervioso() {
+	public void quePuedaCazarUnProfugoDeBajaInocenciaYQueSeaNervioso() {
 		CazadorRural cazadorRural = new CazadorRural("Juan", 40);
 		Profugo profugo1 = new Profugo("Jorge", 30, 80, true);
 		
@@ -23,14 +23,14 @@ public class CazadorRuralTest {
 	}
 	
 	@Test
-	public void queNoPuedaCazarUnProfujoDeMayorInocenciaQueExperiencia() {
+	public void queNoPuedaCazarUnProfugoDeMayorInocenciaQueExperiencia() {
 		CazadorRural cazadorRural = new CazadorRural("Juan", 40);
 		Profugo profugo1 = new Profugo("Jorge", 41, 80, true);
 		
 		assertFalse(cazadorRural.cazar(profugo1));;
 	}
 	@Test
-	public void queNoPuedaCazarUnProfujoQueNoSeaNervioso() {
+	public void queNoPuedaCazarUnProfugoQueNoSeaNervioso() {
 		CazadorRural cazadorRural = new CazadorRural("Juan", 50);
 		Profugo profugo1 = new Profugo("Jorge", 1, 80, false);
 		
@@ -39,7 +39,7 @@ public class CazadorRuralTest {
 	}
 	
 	@Test
-	public void queNoPuedaCazarUnProfujoYLoPuedaIntimidar() {
+	public void queNoPuedaCazarUnProfugoYLoPuedaIntimidar() {
 		CazadorRural cazadorRural = new CazadorRural("Juan", 50);
 		Profugo profugo1 = new Profugo("Jorge", 40, 80, false);
 		cazadorRural.cazar(profugo1);

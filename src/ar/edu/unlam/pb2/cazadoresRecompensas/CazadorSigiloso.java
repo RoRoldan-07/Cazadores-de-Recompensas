@@ -1,28 +1,26 @@
 package ar.edu.unlam.pb2.cazadoresRecompensas;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
-public class CazadorUrbano extends Cazador {
+public class CazadorSigiloso extends Cazador{
 
-	public CazadorUrbano(String nombre, Integer experiencia) {
+
+	public CazadorSigiloso(String nombre, Integer experiencia) {
 		super(nombre, experiencia);
-	}
+		}
 
 	@Override
 	public boolean cazar(Profugo profugo1) {
-		if(this.experiencia > profugo1.getInocencia() && profugo1.esNervioso() == false) {
+		if(this.experiencia > profugo1.getInocencia() && profugo1.getHabilidad()<50) {
 			profugosCapturados.add(profugo1);
 			return true;
 		}
 		else {
-			profugo1.reducirInocencia();
-			profugo1.setNervioso(false);
+			profugo1.reducirHabilidad();
 			profugosIntimidados.add(profugo1);
 	
 			return false;
 		}
 	}
-
 }
