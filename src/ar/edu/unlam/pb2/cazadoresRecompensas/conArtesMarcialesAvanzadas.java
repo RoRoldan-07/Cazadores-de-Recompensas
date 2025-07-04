@@ -44,5 +44,10 @@ public class conArtesMarcialesAvanzadas implements Profugo {
 		// TODO Auto-generated method stub
 		this.profugoComun.reducirHabilidad(cantidad);
 	}
+	
+	@Override
+	public void setNervioso(boolean valor) {
+		this.profugoComun.setNervioso(valor);
+	}
 
 }

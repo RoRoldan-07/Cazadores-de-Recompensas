@@ -17,7 +17,7 @@ public class CazadorSigiloso extends Cazador{
 			return true;
 		}
 		else {
-			profugo1.reducirHabilidad();
+			profugo1.reducirHabilidad(5);
 			profugosIntimidados.add(profugo1);
 	
 			return false;
