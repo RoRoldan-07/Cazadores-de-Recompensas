@@ -10,6 +10,10 @@ public class ProfugoBase implements Profugo {
 	protected String nombre;
 
 	public ProfugoBase(String nombre, Integer inocencia, Integer habilidad, boolean nervioso) {
+		
+		if (inocencia < 0 || inocencia > 100 || habilidad < 0 || habilidad > 100) {
+			throw new ValorInvalidoException("La inocencia y la habilidad deben estar entre 0 y 100.");
+		}
 		this.nombre = nombre;
 		this.inocencia = inocencia;
 		this.habilidad = habilidad;

@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public abstract class Cazador {
-
+	
 	protected String nombre;
 	protected Integer experiencia;
 	protected Set<Profugo> profugosCapturados = new HashSet<Profugo>();
@@ -12,6 +12,11 @@ public abstract class Cazador {
 	
 	
 	public Cazador(String nombre, Integer experiencia) {
+		
+		if (experiencia == null || experiencia < 0) {
+		   throw new ValorInvalidoException("La experiencia no puede ser nula ni negativa");
+		}
+		
 		this.nombre = nombre;
 		this.experiencia = experiencia;
 	}
@@ -51,7 +56,12 @@ public abstract class Cazador {
 		this.experiencia += (habilidadMinima) + (2 * totalProfugosCapturados);
 	}
 	
-	public void cazarEnZona(Zona zona) {
+	public void cazarEnZona(Zona zona) throws ZonaVaciaException {
+		
+		if (zona.getProfugos() == null || zona.getProfugos().isEmpty()) {
+	        throw new ZonaVaciaException("No hay profugos para cazar en la zona");
+	    }
+		
 		for (Profugo profugo : zona.getProfugos()) {
 			cazar(profugo);
 		}

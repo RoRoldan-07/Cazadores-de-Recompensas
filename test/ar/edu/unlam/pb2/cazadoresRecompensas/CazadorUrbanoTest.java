@@ -90,7 +90,7 @@ public class CazadorUrbanoTest {
 	}
 
 	@Test
-	public void quePuedaCazarEnUnaZonaEspecificaUnConjuntoDeProfugos() {
+	public void quePuedaCazarEnUnaZonaEspecificaUnConjuntoDeProfugos() throws ZonaVaciaException {
 		CazadorUrbano cazadorUrbano = new CazadorUrbano("Martin", 50);
 		ProfugoBase profugo1 = new ProfugoBase("Jorge", 40, 80, false);
 		ProfugoBase profugo2 = new ProfugoBase("Martin", 40, 80, false);
@@ -110,7 +110,7 @@ public class CazadorUrbanoTest {
 	}
 
 	@Test
-	public void quePuedaCazarEnUnaZonaEspecificaUnConjuntoDeProfugosYQueLaZonaQuedeLimpia() {
+	public void quePuedaCazarEnUnaZonaEspecificaUnConjuntoDeProfugosYQueLaZonaQuedeLimpia() throws ZonaVaciaException {
 		CazadorUrbano cazadorUrbano = new CazadorUrbano("Martin", 50);
 		ProfugoBase profugo1 = new ProfugoBase("Jorge", 40, 80, false);
 		ProfugoBase profugo2 = new ProfugoBase("Martin", 30, 80, false);
@@ -126,6 +126,35 @@ public class CazadorUrbanoTest {
 		assertFalse(zona1.getProfugos().contains(profugo1));
 		assertFalse(zona1.getProfugos().contains(profugo2));
 		assertFalse(zona1.getProfugos().contains(profugo3));
+	}
+	
+	@Test(expected = ValorInvalidoException.class)
+	public void queNoSePuedaCrearUnCazadorConExperienciaNegativa() {
+		CazadorUrbano cazadorUrbano = new CazadorUrbano("Martin", -1);
+	}
+	
+	@Test(expected = ValorInvalidoException.class)
+	public void queNoSePuedaCrearUnCazadorConExperienciaNula() {
+		CazadorUrbano cazadorUrbano = new CazadorUrbano("Martin", null);
+	}
+	
+	@Test
+	public void queSeLanceUnaExcepcionConElMensajeCorrectoCuandoLaExperienciaEsNegativa() {
+	    try {
+	        new CazadorUrbano("Jorge", -1);
+	        fail("Se esperaba una excepción por experiencia inválida");
+	    } catch (ValorInvalidoException e) {
+	        assertEquals("La experiencia no puede ser nula ni negativa", e.getMessage());
+	    }
+	}
+	
+	@Test(expected = ZonaVaciaException.class)
+	public void queNoSePuedaCazarEnUnaZonaVacia() throws ZonaVaciaException {
+	    CazadorUrbano cazador = new CazadorUrbano("Martin", 50);
+	    ArrayList<Profugo> listaDeProfugos = new ArrayList<Profugo>();
+	    Zona zonaVacia = new Zona("Moron", listaDeProfugos);
+
+	    cazador.cazarEnZona(zonaVacia);
 	}
 
 }

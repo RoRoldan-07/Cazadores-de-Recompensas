@@ -43,5 +43,10 @@ public class ProfugoTest {
 		assertEquals(40, profugoEvolucionado.getInocencia());
 
 	}
+	
+	@Test(expected = ValorInvalidoException.class)
+	public void queNoSePuedaCrearUnProfugoConInocenciaYHabilidadFueraDeRango() {
+	    new ProfugoBase("rodrigo", -10, 120, true);
+	}
 
 }
