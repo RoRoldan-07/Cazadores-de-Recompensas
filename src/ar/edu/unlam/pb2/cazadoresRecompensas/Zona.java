@@ -6,18 +6,18 @@ import java.util.Set;
 public class Zona {
 
 	private String nombre;
-	private ArrayList<ProfugoBase> listaDeProfugos;
+	private ArrayList<Profugo> listaDeProfugos;
 
-	public Zona(String nombre, ArrayList<ProfugoBase> listaDeProfugos) {
+	public Zona(String nombre, ArrayList<Profugo> listaDeProfugos) {
 		this.nombre = nombre;
 		this.listaDeProfugos = listaDeProfugos;
 	}
 
-	public ArrayList<ProfugoBase> getProfugos() {
+	public ArrayList<Profugo> getProfugos() {
 		return this.listaDeProfugos;
 	}
 
-	public void eliminarCapturados(Set<ProfugoBase> profugosCapturados) {
+	public void eliminarCapturados(Set<Profugo> profugosCapturados) {
 		listaDeProfugos.removeAll(profugosCapturados);
 	}
 

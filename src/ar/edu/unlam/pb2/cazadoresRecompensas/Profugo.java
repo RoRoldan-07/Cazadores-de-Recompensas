@@ -25,4 +25,6 @@ public interface Profugo {
 		
 	}
 
+	void setNervioso(boolean b);
+
 }

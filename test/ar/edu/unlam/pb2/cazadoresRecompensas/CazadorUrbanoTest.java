@@ -95,7 +95,7 @@ public class CazadorUrbanoTest {
 		ProfugoBase profugo1 = new ProfugoBase("Jorge", 40, 80, false);
 		ProfugoBase profugo2 = new ProfugoBase("Martin", 40, 80, false);
 		ProfugoBase profugo3 = new ProfugoBase("Lucas", 40, 80, true);
-		ArrayList<ProfugoBase> listaDeProfugos = new ArrayList<ProfugoBase>();
+		ArrayList<Profugo> listaDeProfugos = new ArrayList<Profugo>();
 		listaDeProfugos.add(profugo1);
 		listaDeProfugos.add(profugo2);
 		listaDeProfugos.add(profugo3);
@@ -115,7 +115,7 @@ public class CazadorUrbanoTest {
 		ProfugoBase profugo1 = new ProfugoBase("Jorge", 40, 80, false);
 		ProfugoBase profugo2 = new ProfugoBase("Martin", 30, 80, false);
 		ProfugoBase profugo3 = new ProfugoBase("Lucas", 20, 80, false);
-		ArrayList<ProfugoBase> listaDeProfugos = new ArrayList<ProfugoBase>();
+		ArrayList<Profugo> listaDeProfugos = new ArrayList<Profugo>();
 		listaDeProfugos.add(profugo1);
 		listaDeProfugos.add(profugo2);
 		listaDeProfugos.add(profugo3);
