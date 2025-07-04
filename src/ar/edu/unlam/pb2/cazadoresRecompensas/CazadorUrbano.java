@@ -8,8 +8,8 @@ public class CazadorUrbano {
 
 	private String nombre;
 	private Integer experiencia;
-	private Set<Profugo> profugosCapturados = new HashSet<Profugo>();
-	private Set<Profugo> profugosIntimidados = new HashSet<Profugo>();
+	private Set<ProfugoBase> profugosCapturados = new HashSet<ProfugoBase>();
+	private Set<ProfugoBase> profugosIntimidados = new HashSet<ProfugoBase>();
 
 	public CazadorUrbano(String nombre, Integer experiencia) {
 		this.nombre = nombre;
@@ -20,7 +20,7 @@ public class CazadorUrbano {
 		return this.experiencia;
 	}
 
-	public boolean cazar(Profugo profugo1) {
+	public boolean cazar(ProfugoBase profugo1) {
 		if(this.experiencia > profugo1.getInocencia() && profugo1.esNervioso() == false) {
 			profugosCapturados.add(profugo1);
 			return true;
@@ -38,7 +38,7 @@ public class CazadorUrbano {
 		Integer habilidadMinima = null;
 		Integer totalProfugosCapturados = 0;
 		
-		for (Profugo p : profugosIntimidados) {
+		for (ProfugoBase p : profugosIntimidados) {
 			
 			if(habilidadMinima==null || p.getHabilidad() < habilidadMinima) {
 				habilidadMinima = p.getHabilidad();
@@ -52,14 +52,14 @@ public class CazadorUrbano {
 	}
 	
 
-	public Object buscarCapturado(Profugo profugo1) {
+	public Object buscarCapturado(ProfugoBase profugo1) {
 		if(profugosCapturados.contains(profugo1)) {
 			return profugo1;
 		}
 		return null;
 	}
 
-	public Object buscarIntimidados(Profugo profugo1) {
+	public Object buscarIntimidados(ProfugoBase profugo1) {
 		if(profugosIntimidados.contains(profugo1)) {
 			return profugo1;
 		}
@@ -67,7 +67,7 @@ public class CazadorUrbano {
 	}
 
 	public void cazarEnZona(Zona zona) {
-		for (Profugo profugo : zona.getProfugos()) {
+		for (ProfugoBase profugo : zona.getProfugos()) {
 			cazar(profugo);
 		}
 		zona.eliminarCapturados(profugosCapturados);
