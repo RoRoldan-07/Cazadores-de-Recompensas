@@ -9,14 +9,14 @@ import org.junit.Test;
 public class CazadorUrbanoTest {
 
 	@Test
-	public void queSePuedaConocerLaExperienciaDelCazador() {
+	public void queSePuedaConocerLaExperienciaDelCazador() throws ValorInvalidoException, CazadorSinNombreException {
 		CazadorUrbano cazadorUrbano = new CazadorUrbano("Martin", 50);
 
 		assertEquals(Integer.valueOf(50), cazadorUrbano.getExperiencia());
 	}
 
 	@Test
-	public void quePuedaCazarUnProfugoDeBajaInocenciaYNoNervioso() {
+	public void quePuedaCazarUnProfugoDeBajaInocenciaYNoNervioso() throws ProfugoNuloException, ValorInvalidoException, CazadorSinNombreException {
 		CazadorUrbano cazadorUrbano = new CazadorUrbano("Martin", 50);
 		ProfugoBase profugo1 = new ProfugoBase("Jorge", 40, 80, false);
 
@@ -24,7 +24,7 @@ public class CazadorUrbanoTest {
 	}
 
 	@Test
-	public void queNoPuedaCazarUnProfugoDeMayorInocenciaQueExperiencia() {
+	public void queNoPuedaCazarUnProfugoDeMayorInocenciaQueExperiencia() throws ProfugoNuloException, ValorInvalidoException, CazadorSinNombreException {
 		CazadorUrbano cazadorUrbano = new CazadorUrbano("Martin", 50);
 		ProfugoBase profugo1 = new ProfugoBase("Jorge", 51, 80, false);
 
@@ -33,7 +33,7 @@ public class CazadorUrbanoTest {
 	}
 
 	@Test
-	public void queNoPuedaCazarUnProfugoQueSeaNervioso() {
+	public void queNoPuedaCazarUnProfugoQueSeaNervioso() throws ProfugoNuloException, ValorInvalidoException, CazadorSinNombreException {
 		CazadorUrbano cazadorUrbano = new CazadorUrbano("Martin", 50);
 		ProfugoBase profugo1 = new ProfugoBase("Jorge", 1, 80, true);
 
@@ -42,7 +42,7 @@ public class CazadorUrbanoTest {
 	}
 
 	@Test
-	public void queNoPuedaCazarUnProfugoYLoPuedaIntimidar() {
+	public void queNoPuedaCazarUnProfugoYLoPuedaIntimidar() throws ProfugoNuloException, ValorInvalidoException, CazadorSinNombreException {
 		CazadorUrbano cazadorUrbano = new CazadorUrbano("Martin", 50);
 		ProfugoBase profugo1 = new ProfugoBase("Jorge", 54, 80, true);
 		cazadorUrbano.cazar(profugo1);
@@ -53,7 +53,7 @@ public class CazadorUrbanoTest {
 	}
 
 	@Test
-	public void queLaInocenciaDelProfugoNoPuedaSerMenorACero() {
+	public void queLaInocenciaDelProfugoNoPuedaSerMenorACero() throws ProfugoNuloException, ValorInvalidoException, CazadorSinNombreException {
 		CazadorUrbano cazadorUrbano = new CazadorUrbano("Martin", 50);
 		ProfugoBase profugo1 = new ProfugoBase("Jorge", 1, 80, true);
 		cazadorUrbano.cazar(profugo1);
@@ -62,7 +62,7 @@ public class CazadorUrbanoTest {
 	}
 
 	@Test
-	public void queAlCazarUnProfugoSeAgregeAUnaLaListaDeCapturados() {
+	public void queAlCazarUnProfugoSeAgregeAUnaLaListaDeCapturados() throws ProfugoNuloException, ValorInvalidoException, CazadorSinNombreException {
 		CazadorUrbano cazadorUrbano = new CazadorUrbano("Martin", 50);
 		ProfugoBase profugo1 = new ProfugoBase("Jorge", 40, 80, false);
 		cazadorUrbano.cazar(profugo1);
@@ -71,7 +71,7 @@ public class CazadorUrbanoTest {
 	}
 
 	@Test
-	public void queAlIntimidarUnProfugoSeAgregeAUnaLaListaDeIntimidados() {
+	public void queAlIntimidarUnProfugoSeAgregeAUnaLaListaDeIntimidados() throws ProfugoNuloException, ValorInvalidoException, CazadorSinNombreException {
 		CazadorUrbano cazadorUrbano = new CazadorUrbano("Martin", 50);
 		ProfugoBase profugo1 = new ProfugoBase("Jorge", 40, 80, true);
 		cazadorUrbano.cazar(profugo1);
@@ -80,7 +80,7 @@ public class CazadorUrbanoTest {
 	}
 
 	@Test
-	public void queAlIntimidarNoSumeExperiencia() {
+	public void queAlIntimidarNoSumeExperiencia() throws ProfugoNuloException, ValorInvalidoException, CazadorSinNombreException {
 		CazadorUrbano cazadorUrbano = new CazadorUrbano("Martin", 50);
 		ProfugoBase profugo = new ProfugoBase("Jorge", 100, 30, false);
 
@@ -90,7 +90,7 @@ public class CazadorUrbanoTest {
 	}
 
 	@Test
-	public void quePuedaCazarEnUnaZonaEspecificaUnConjuntoDeProfugos() throws ZonaVaciaException {
+	public void quePuedaCazarEnUnaZonaEspecificaUnConjuntoDeProfugos() throws ZonaVaciaException, ProfugoNuloException, ValorInvalidoException, CazadorSinNombreException {
 		CazadorUrbano cazadorUrbano = new CazadorUrbano("Martin", 50);
 		ProfugoBase profugo1 = new ProfugoBase("Jorge", 40, 80, false);
 		ProfugoBase profugo2 = new ProfugoBase("Martin", 40, 80, false);
@@ -110,7 +110,7 @@ public class CazadorUrbanoTest {
 	}
 
 	@Test
-	public void quePuedaCazarEnUnaZonaEspecificaUnConjuntoDeProfugosYQueLaZonaQuedeLimpia() throws ZonaVaciaException {
+	public void quePuedaCazarEnUnaZonaEspecificaUnConjuntoDeProfugosYQueLaZonaQuedeLimpia() throws ZonaVaciaException, ProfugoNuloException, ValorInvalidoException, CazadorSinNombreException {
 		CazadorUrbano cazadorUrbano = new CazadorUrbano("Martin", 50);
 		ProfugoBase profugo1 = new ProfugoBase("Jorge", 40, 80, false);
 		ProfugoBase profugo2 = new ProfugoBase("Martin", 30, 80, false);
@@ -129,17 +129,17 @@ public class CazadorUrbanoTest {
 	}
 	
 	@Test(expected = ValorInvalidoException.class)
-	public void queNoSePuedaCrearUnCazadorConExperienciaNegativa() {
+	public void queNoSePuedaCrearUnCazadorConExperienciaNegativa() throws ValorInvalidoException, CazadorSinNombreException {
 		CazadorUrbano cazadorUrbano = new CazadorUrbano("Martin", -1);
 	}
 	
 	@Test(expected = ValorInvalidoException.class)
-	public void queNoSePuedaCrearUnCazadorConExperienciaNula() {
+	public void queNoSePuedaCrearUnCazadorConExperienciaNula() throws ValorInvalidoException, CazadorSinNombreException {
 		CazadorUrbano cazadorUrbano = new CazadorUrbano("Martin", null);
 	}
 	
 	@Test
-	public void queSeLanceUnaExcepcionConElMensajeCorrectoCuandoLaExperienciaEsNegativa() {
+	public void queSeLanceUnaExcepcionConElMensajeCorrectoCuandoLaExperienciaEsNegativa() throws CazadorSinNombreException {
 	    try {
 	        new CazadorUrbano("Jorge", -1);
 	        fail("Se esperaba una excepción por experiencia inválida");
@@ -149,12 +149,28 @@ public class CazadorUrbanoTest {
 	}
 	
 	@Test(expected = ZonaVaciaException.class)
-	public void queNoSePuedaCazarEnUnaZonaVacia() throws ZonaVaciaException {
+	public void queNoSePuedaCazarEnUnaZonaVacia() throws ZonaVaciaException, ProfugoNuloException, ValorInvalidoException, CazadorSinNombreException {
 	    CazadorUrbano cazador = new CazadorUrbano("Martin", 50);
 	    ArrayList<Profugo> listaDeProfugos = new ArrayList<Profugo>();
 	    Zona zonaVacia = new Zona("Moron", listaDeProfugos);
 
 	    cazador.cazarEnZona(zonaVacia);
+	}
+	
+	@Test(expected = ProfugoNuloException.class)
+	public void queNoSePuedaCazarUnProfugoQueSeaNulo() throws ProfugoNuloException, ValorInvalidoException, CazadorSinNombreException {
+	    CazadorUrbano cazador = new CazadorUrbano("Martin", 50);
+	    cazador.cazar(null);
+	}
+	
+	@Test
+	public void queNoSePuedaCrearUnCazadorConNombreNuloYVerificarMensaje() {
+	    try {
+	        new CazadorUrbano(null, 50);
+	        fail("Se esperaba una excepcion CazadorSinNombreException");
+	    } catch (CazadorSinNombreException excepcion) {
+	        assertEquals("El cazador debe tener un nombre valido", excepcion.getMessage());
+	    }
 	}
 
 }

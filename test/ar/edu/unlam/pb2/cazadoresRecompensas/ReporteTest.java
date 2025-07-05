@@ -9,7 +9,7 @@ import org.junit.Test;
 public class ReporteTest {
 
 	@Test
-	public void queSePuedaObtenerElListadoDeTodosLosProfugosCapturados() {
+	public void queSePuedaObtenerElListadoDeTodosLosProfugosCapturados() throws ProfugoNuloException, ValorInvalidoException, CazadorSinNombreException {
 		Cazador c1 = new CazadorUrbano("Juan", 50);
 		Cazador c2 = new CazadorRural("Pedro", 60);
 
@@ -34,7 +34,7 @@ public class ReporteTest {
 	}
 
 	@Test
-	public void queSePuedaObtenerProfugoMasHabilCapturado() {
+	public void queSePuedaObtenerProfugoMasHabilCapturado() throws ProfugoNuloException, ValorInvalidoException, CazadorSinNombreException {
 		AgenciaDeSeguridad agencia = new AgenciaDeSeguridad();
 
 		Cazador cazador = new CazadorUrbano("Ana", 60);
@@ -51,7 +51,7 @@ public class ReporteTest {
 	}
 
 	@Test
-	public void queSePuedaObtenerElCazadorConMasCapturas() {
+	public void queSePuedaObtenerElCazadorConMasCapturas() throws ProfugoNuloException, ValorInvalidoException, CazadorSinNombreException {
 		AgenciaDeSeguridad agencia = new AgenciaDeSeguridad();
 
 		Cazador cazador1 = new CazadorUrbano("Ana", 60);

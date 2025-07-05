@@ -8,12 +8,16 @@ import java.util.Set;
 public class CazadorUrbano extends Cazador {
 
 
-	public CazadorUrbano(String nombre, Integer experiencia) {
+	public CazadorUrbano(String nombre, Integer experiencia) throws ValorInvalidoException, CazadorSinNombreException {
 		super(nombre, experiencia);
 	}
 
 	@Override
-	public boolean cazar(Profugo profugo1) {
+	public boolean cazar(Profugo profugo1) throws ProfugoNuloException {
+		
+		 if (profugo1 == null) {
+		        throw new ProfugoNuloException("No se puede cazar un profugo nulo.");
+		    }
 
 		if(this.experiencia > profugo1.getInocencia() && profugo1.esNervioso() == false) {
 			profugosCapturados.add(profugo1);
