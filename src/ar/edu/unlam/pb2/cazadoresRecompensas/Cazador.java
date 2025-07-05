@@ -11,7 +11,11 @@ public abstract class Cazador {
 	protected Set<Profugo> profugosIntimidados = new HashSet<Profugo>();
 	
 	
-	public Cazador(String nombre, Integer experiencia) {
+	public Cazador(String nombre, Integer experiencia) throws CazadorSinNombreException , ValorInvalidoException {
+		
+		if (nombre == null || nombre.trim().isEmpty()) {
+	        throw new CazadorSinNombreException("El cazador debe tener un nombre valido");
+		}
 		
 		if (experiencia == null || experiencia < 0) {
 		   throw new ValorInvalidoException("La experiencia no puede ser nula ni negativa");
@@ -56,7 +60,7 @@ public abstract class Cazador {
 		this.experiencia += (habilidadMinima) + (2 * totalProfugosCapturados);
 	}
 	
-	public void cazarEnZona(Zona zona) throws ZonaVaciaException {
+	public void cazarEnZona(Zona zona) throws ZonaVaciaException, ProfugoNuloException {
 		
 		if (zona.getProfugos() == null || zona.getProfugos().isEmpty()) {
 	        throw new ZonaVaciaException("No hay profugos para cazar en la zona");
@@ -69,6 +73,6 @@ public abstract class Cazador {
 		sumarExperiencia();
 	}
 
-	public abstract boolean cazar(Profugo profugo);
+	public abstract boolean cazar(Profugo profugo) throws ProfugoNuloException;
 	
 }

@@ -9,13 +9,13 @@ import org.junit.Test;
 public class CazadorRuralTest {
 
 	@Test
-	public void queSePuedaConocerLaExperienciaDelCazador() {
+	public void queSePuedaConocerLaExperienciaDelCazador() throws ValorInvalidoException, CazadorSinNombreException {
 		CazadorRural cazadorRural = new CazadorRural("Juan", 40);
 		
 		assertEquals(Integer.valueOf(40), cazadorRural.getExperiencia());
 	}
 	@Test
-	public void quePuedaCazarUnProfugoDeBajaInocenciaYQueSeaNervioso() {
+	public void quePuedaCazarUnProfugoDeBajaInocenciaYQueSeaNervioso() throws ProfugoNuloException, ValorInvalidoException, CazadorSinNombreException {
 		CazadorRural cazadorRural = new CazadorRural("Juan", 40);
 		ProfugoBase profugo1 = new ProfugoBase("Jorge", 30, 80, true);
 		
@@ -23,14 +23,14 @@ public class CazadorRuralTest {
 	}
 	
 	@Test
-	public void queNoPuedaCazarUnProfugoDeMayorInocenciaQueExperiencia() {
+	public void queNoPuedaCazarUnProfugoDeMayorInocenciaQueExperiencia() throws ProfugoNuloException, ValorInvalidoException, CazadorSinNombreException {
 		CazadorRural cazadorRural = new CazadorRural("Juan", 40);
 		ProfugoBase profugo1 = new ProfugoBase("Jorge", 41, 80, true);
 		
 		assertFalse(cazadorRural.cazar(profugo1));;
 	}
 	@Test
-	public void queNoPuedaCazarUnProfugoQueNoSeaNervioso() {
+	public void queNoPuedaCazarUnProfugoQueNoSeaNervioso() throws ProfugoNuloException, ValorInvalidoException, CazadorSinNombreException {
 		CazadorRural cazadorRural = new CazadorRural("Juan", 50);
 		ProfugoBase profugo1 = new ProfugoBase("Jorge", 1, 80, false);
 		
@@ -39,7 +39,7 @@ public class CazadorRuralTest {
 	}
 	
 	@Test
-	public void queNoPuedaCazarUnProfugoYLoPuedaIntimidar() {
+	public void queNoPuedaCazarUnProfugoYLoPuedaIntimidar() throws ProfugoNuloException, ValorInvalidoException, CazadorSinNombreException {
 		CazadorRural cazadorRural = new CazadorRural("Juan", 50);
 		ProfugoBase profugo1 = new ProfugoBase("Jorge", 40, 80, false);
 		cazadorRural.cazar(profugo1);
@@ -49,7 +49,7 @@ public class CazadorRuralTest {
 	}
 	
 	@Test
-	public void queAlCazarUnProfugoSeAgregeAUnaLaListaDeCapturados() {
+	public void queAlCazarUnProfugoSeAgregeAUnaLaListaDeCapturados() throws ProfugoNuloException, ValorInvalidoException, CazadorSinNombreException {
 		CazadorRural cazadorRural = new CazadorRural("Juan", 40);
 		ProfugoBase profugo1 = new ProfugoBase("Jorge", 30, 80, true);
 		cazadorRural.cazar(profugo1);
@@ -58,7 +58,7 @@ public class CazadorRuralTest {
 	}
 	
 	@Test
-	public void queAlIntimidarUnProfugoSeAgregeAUnaLaListaDeIntimidados() {
+	public void queAlIntimidarUnProfugoSeAgregeAUnaLaListaDeIntimidados() throws ProfugoNuloException, ValorInvalidoException, CazadorSinNombreException {
 		CazadorRural cazadorRural = new CazadorRural("Juan", 40);
 		ProfugoBase profugo1 = new ProfugoBase("Jorge", 30, 80, false);
 		cazadorRural.cazar(profugo1);
@@ -67,7 +67,7 @@ public class CazadorRuralTest {
 	}
 	
 	@Test
-	public void quePuedaCazarEnUnaZonaEspecificaUnConjuntoDeProfugos() throws ZonaVaciaException {
+	public void quePuedaCazarEnUnaZonaEspecificaUnConjuntoDeProfugos() throws ZonaVaciaException, ProfugoNuloException, ValorInvalidoException, CazadorSinNombreException {
 		CazadorRural cazadorRural = new CazadorRural("Juan", 50);
 		ProfugoBase profugo1 = new ProfugoBase("Jorge", 40, 80, true);
 		ProfugoBase profugo2 = new ProfugoBase("Martin", 40, 80, true);
@@ -87,7 +87,7 @@ public class CazadorRuralTest {
 	}
 	
 	@Test
-	public void quePuedaCazarEnUnaZonaEspecificaUnConjuntoDeProfugosYSumeExperiencia() throws ZonaVaciaException {
+	public void quePuedaCazarEnUnaZonaEspecificaUnConjuntoDeProfugosYSumeExperiencia() throws ZonaVaciaException, ProfugoNuloException, ValorInvalidoException, CazadorSinNombreException {
 		CazadorRural cazadorRural = new CazadorRural("Juan", 50);
 		ProfugoBase profugo1 = new ProfugoBase("Jorge", 40, 80, true);
 		ProfugoBase profugo2 = new ProfugoBase("Martin", 40, 80, true);
@@ -103,7 +103,7 @@ public class CazadorRuralTest {
 	}
 	
 	@Test
-	public void queAlIntimidarNoSumeExperiencia() {
+	public void queAlIntimidarNoSumeExperiencia() throws ProfugoNuloException, ValorInvalidoException, CazadorSinNombreException {
 		CazadorRural cazadorRural = new CazadorRural("Martin", 50);
 		ProfugoBase profugo = new ProfugoBase("Jorge", 100, 30, true); 
 
@@ -113,7 +113,7 @@ public class CazadorRuralTest {
 	}
 	
 	@Test
-	public void quePuedaCazarEnUnaZonaEspecificaUnConjuntoDeProfugosYQueLaZonaQuedeLimpia() throws ZonaVaciaException {
+	public void quePuedaCazarEnUnaZonaEspecificaUnConjuntoDeProfugosYQueLaZonaQuedeLimpia() throws ZonaVaciaException, ProfugoNuloException, ValorInvalidoException, CazadorSinNombreException {
 		CazadorRural cazadorRural = new CazadorRural("Juan", 50);
 		ProfugoBase profugo1 = new ProfugoBase("Jorge", 40, 80, true);
 		ProfugoBase profugo2 = new ProfugoBase("Martin", 40, 80, true);
