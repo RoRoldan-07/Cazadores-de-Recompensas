@@ -75,4 +75,7 @@ public abstract class Cazador {
 
 	public abstract boolean cazar(Profugo profugo) throws ProfugoNuloException;
 	
+	public Set<Profugo> getProfugosCapturados(){
+		return this.profugosCapturados;
+	}
 }
